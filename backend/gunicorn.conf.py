@@ -1,8 +1,13 @@
 """Gunicorn configuration file"""
 import os
 
+# Get PORT from environment variable
+port = os.environ.get('PORT', '5001')
+print(f"🔍 Gunicorn config: PORT environment variable = {port}")
+print(f"🔍 Gunicorn config: Binding to 0.0.0.0:{port}")
+
 # Bind to the port specified by Render (or default to 5001 for local)
-bind = f"0.0.0.0:{os.environ.get('PORT', '5001')}"
+bind = f"0.0.0.0:{port}"
 
 # Worker configuration
 workers = 2
