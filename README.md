@@ -84,7 +84,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-The API will be available at `http://localhost:5000`
+The API will be available at `http://localhost:5001`
 
 ## 🎨 3D Components
 
@@ -118,14 +118,14 @@ Two avatar components are available:
 
 Create a `.env.local` file in the `frontend/` directory:
 ```
-NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_API_URL=http://localhost:5001
 ```
 
 ### Backend Environment Variables
 
 Create a `.env` file in the `backend/` directory:
 ```
-PORT=5000
+PORT=5001
 FLASK_ENV=development
 ```
 
