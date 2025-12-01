@@ -35,7 +35,7 @@ export default function ExperienceTimeline() {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400 transform md:-translate-x-1/2"></div>
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400 transform md:-translate-x-1/2"></div>
 
           <div className="space-y-12">
             {experience.map((exp, index) => (
@@ -50,11 +50,11 @@ export default function ExperienceTimeline() {
                 }`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-gray-900 transform md:-translate-x-1/2 z-10"></div>
+                <div className="absolute left-6 md:left-1/2 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-gray-900 transform md:-translate-x-1/2 z-10"></div>
 
                 {/* Content card */}
                 <div
-                  className={`w-full md:w-5/12 ml-16 md:ml-0 ${
+                  className={`w-full md:w-5/12 ml-12 md:ml-0 ${
                     index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
                   }`}
                 >
