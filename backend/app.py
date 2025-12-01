@@ -148,7 +148,7 @@ with app.app_context():
 @app.route('/')
 def index():
     """Root endpoint"""
-    return {
+    return jsonify({
         'message': 'Portfolio API',
         'version': '1.0.0',
         'endpoints': {
@@ -156,7 +156,12 @@ def index():
             'projects': '/api/projects',
             'admin_login': '/api/admin/login'
         }
-    }
+    })
+
+@app.route('/health')
+def root_health():
+    """Root health check for Render"""
+    return jsonify({"status": "healthy", "message": "Flask backend is running"}), 200
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5001))
