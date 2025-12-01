@@ -2,8 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp, faCheckCircle, faStar } from '@fortawesome/free-solid-svg-icons';
-import { useState, useEffect } from 'react';
+import { faCheckCircle, faStar } from '@fortawesome/free-solid-svg-icons';
 
 interface SuccessAnimationProps {
   isVisible: boolean;
@@ -18,17 +17,6 @@ export default function SuccessAnimation({
   message = "You're subscribed!",
   showBackButton = true 
 }: SuccessAnimationProps) {
-  const [imageError, setImageError] = useState(false);
-  const githubImageUrl = "https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Thumbs%20Up.png";
-  
-  // Preload the image to catch errors early
-  useEffect(() => {
-    if (isVisible) {
-      const img = new Image();
-      img.onerror = () => setImageError(true);
-      img.src = githubImageUrl;
-    }
-  }, [isVisible]);
 
   return (
     <AnimatePresence mode="wait">
