@@ -45,9 +45,8 @@ export default function Particles3D({ count = 1000, speed = 0.5 }: Particles3DPr
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
+          args={[points, 3]}
           count={particles.length}
-          array={points}
-          itemSize={3}
         />
       </bufferGeometry>
       <pointsMaterial size={0.05} color="#ffffff" transparent opacity={0.6} />
