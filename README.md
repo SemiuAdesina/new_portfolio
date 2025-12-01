@@ -139,7 +139,9 @@ FLASK_ENV=development
 ### Backend (Render/Railway/Heroku)
 1. Set Python version
 2. Install dependencies: `pip install -r requirements.txt`
-3. Run: `python app.py`
+3. Run: `gunicorn app:app` (for production) or `python app.py` (for development)
+
+**Note:** On Render, the `PORT` environment variable is automatically set (usually 10000). Your app will automatically use it. For local development, it defaults to 5001.
 
 ## 📚 Technologies Used
 
