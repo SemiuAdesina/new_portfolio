@@ -8,6 +8,7 @@ import { faSpinner, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { projectsAPI, Project } from '@/lib/api/projects';
 import SuccessAnimation from '../ui/SuccessAnimation';
 import { subscriptionsAPI } from '@/lib/api/subscriptions';
+import { API_BASE_URL } from '@/lib/api/client';
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -132,7 +133,7 @@ export default function Projects() {
                 {project.thumbnail_image && (
                   <div className="relative h-48 overflow-hidden">
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/${project.thumbnail_image}`}
+                      src={`${API_BASE_URL}/${project.thumbnail_image}`}
                       alt={project.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-300"
