@@ -131,10 +131,20 @@ FLASK_ENV=development
 
 ## 🚢 Deployment
 
-### Frontend (Vercel/Netlify)
-1. Connect your repository
-2. Set build command: `cd frontend && npm run build`
-3. Set output directory: `frontend/.next`
+### Frontend (Render Static Site)
+1. Create a new **Static Site** on Render
+2. Connect your GitHub repository
+3. Configure settings:
+   - **Root Directory:** `frontend`
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `out`
+   - **Environment Variables:** 
+     - `NEXT_PUBLIC_API_URL=https://your-backend-url.onrender.com`
+4. **Custom Domain (Optional):**
+   - Go to Settings → Custom Domains
+   - Add your domain (e.g., `yourname.com`)
+   - Follow Render's DNS instructions to point your domain
+   - SSL certificate is automatically provisioned (free)
 
 ### Backend (Render/Railway/Heroku)
 1. Set Python version
