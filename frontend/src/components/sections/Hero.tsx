@@ -4,8 +4,18 @@ import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode } from '@fortawesome/free-solid-svg-icons';
 import { personalInfo } from '@/data/portfolio';
-import Hero3DScene from '../3d/Hero3DScene';
+import dynamic from 'next/dynamic';
 import TypingText from '../ui/TypingText';
+
+// Lazy load 3D scene for better performance
+const Hero3DScene = dynamic(() => import('../3d/Hero3DScene'), {
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  ),
+  ssr: false, // 3D components don't need SSR
+});
 
 interface HeroProps {
   show3D?: boolean;

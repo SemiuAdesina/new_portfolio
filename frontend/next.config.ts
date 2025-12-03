@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
     unoptimized: true,
     remotePatterns: [],
   },
+  // Performance optimizations
+  compress: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
+  // Optimize production builds (SWC minification is enabled by default in Next.js 16)
+  productionBrowserSourceMaps: false,
   // Disable caching in development to prevent stale JavaScript (especially for Chrome)
   async headers() {
     return [

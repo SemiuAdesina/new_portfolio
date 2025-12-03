@@ -1,39 +1,33 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Navigation from '@/components/sections/Navigation';
 import Hero from '@/components/sections/Hero';
 import ImpactMetrics from '@/components/sections/ImpactMetrics';
 import SkillsMarquee from '@/components/sections/SkillsMarquee';
 import ExperienceTimeline from '@/components/sections/ExperienceTimeline';
-import ProjectsBento from '@/components/sections/ProjectsBento';
-import VideoSection from '@/components/sections/VideoSection';
-import Education from '@/components/sections/Education';
 import Contact from '@/components/sections/Contact';
 import Footer from '@/components/sections/Footer';
-import OnboardingLoader from '@/components/onboarding/OnboardingLoader';
+
+// Lazy load heavy components for better performance
+const ProjectsBento = dynamic(() => import('@/components/sections/ProjectsBento'), {
+  loading: () => <div className="min-h-[400px] flex items-center justify-center"><div className="text-gray-400">Loading projects...</div></div>,
+  ssr: true,
+});
+
+const VideoSection = dynamic(() => import('@/components/sections/VideoSection'), {
+  loading: () => <div className="min-h-[300px]"></div>,
+  ssr: true,
+});
+
+const Education = dynamic(() => import('@/components/sections/Education'), {
+  loading: () => <div className="min-h-[300px]"></div>,
+  ssr: true,
+});
 
 export default function Home() {
-  const [showOnboarding, setShowOnboarding] = useState(true);
-
-  useEffect(() => {
-    // Check if user has seen onboarding before
-    const hasSeenOnboarding = sessionStorage.getItem('hasSeenOnboarding');
-    if (hasSeenOnboarding) {
-      setShowOnboarding(false);
-    }
-  }, []);
-
-  const handleOnboardingComplete = () => {
-    sessionStorage.setItem('hasSeenOnboarding', 'true');
-    setShowOnboarding(false);
-  };
-
   return (
-    <>
-      {showOnboarding && <OnboardingLoader onComplete={handleOnboardingComplete} />}
-      
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white relative overflow-hidden">
         {/* Base Animated Glowing Background */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
           {/* Subtle base grid overlay */}
@@ -64,6 +58,5 @@ export default function Home() {
           <Footer />
         </div>
       </div>
-    </>
   );
 }
